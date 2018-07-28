@@ -18,7 +18,7 @@ class ManageIQ::Providers::Telefonica::Provider < ::Provider
 
   def destroy
     # Bypass the superclass orchestrated destroy for this Provider.
-    #   In the OpenStack provider, the Provider instance is only tightly coupled
+    #   In the Telefonica provider, the Provider instance is only tightly coupled
     #   to the InfraManager.  That is, when the InfraManager is created, then
     #   the Provider is created and vice-versa, when the InfraManager is
     #   destroyed, we need to destroy the Provider.  The CloudManager objects

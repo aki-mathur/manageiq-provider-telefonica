@@ -52,7 +52,7 @@ module TelefonicaHandle
 
       raise MiqException::MiqTelefonicaApiRequestError,
             "Unable to obtain a collection: '#{collection_type}' in a service: '#{telefonica_service_name}' through "\
-            " API. Please, fix your OpenStack installation and run refresh again."
+            " API. Please, fix your Telefonica installation and run refresh again."
     end
 
     def pagination_handle(collection_type, options = {}, method = :all)
@@ -60,7 +60,7 @@ module TelefonicaHandle
     end
 
     ###################################################################################################################
-    # Override below methods to get special behaviour per service and collection. Unfortunately OpenStack does't handle
+    # Override below methods to get special behaviour per service and collection. Unfortunately Telefonica does't handle
     # pagination and multitenancy the same for all services, nor for all API calls obtaining collections under one
     # service
 
@@ -69,7 +69,7 @@ module TelefonicaHandle
     end
 
     def more_pages?(_objects_on_page)
-      # Different per OpenStack service, objects_on_page.response can contain metadata marking if there is a next page.
+      # Different per Telefonica service, objects_on_page.response can contain metadata marking if there is a next page.
       # Already supported by some of the Fog::Collection
       true
     end

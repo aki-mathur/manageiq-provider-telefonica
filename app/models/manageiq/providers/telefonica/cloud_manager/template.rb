@@ -29,7 +29,7 @@ class ManageIQ::Providers::Telefonica::CloudManager::Template < ManageIQ::Provid
   end
 
   def perform_metadata_scan(ost)
-    require 'OpenStackExtract/MiqOpenStackVm/MiqOpenStackImage'
+    require 'TelefonicaExtract/MiqTelefonicaVm/MiqTelefonicaImage'
 
     image_id = ems_ref
     _log.debug "image_id = #{image_id}"
@@ -39,7 +39,7 @@ class ManageIQ::Providers::Telefonica::CloudManager::Template < ManageIQ::Provid
     os_handle = ems.telefonica_handle
 
     begin
-      miqVm = MiqOpenStackImage.new(image_id, :os_handle => os_handle)
+      miqVm = MiqTelefonicaImage.new(image_id, :os_handle => os_handle)
       scan_via_miq_vm(miqVm, ost)
     ensure
       miqVm.unmount if miqVm

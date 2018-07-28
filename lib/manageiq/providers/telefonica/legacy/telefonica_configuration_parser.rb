@@ -34,8 +34,8 @@ class TelefonicaConfigurationParser
   EXTENDED_INTERPOLATION_REGEXP        = /\$\{(.+?)\}/
 
   def parse_file_attributes(file)
-    # Functionality of python's ConfigParser, extended with parsing of the descriptions, specific to OpenStack config
-    # files and specific OpenStack interpolation. Also only '=' is allowed as key/value delimiter and keys has to be
+    # Functionality of python's ConfigParser, extended with parsing of the descriptions, specific to Telefonica config
+    # files and specific Telefonica interpolation. Also only '=' is allowed as key/value delimiter and keys has to be
     # in snake case strictly matched by \w. As it is strict format used by telefonica config files.
     attributes_hash = {}
     attribute       = {}
@@ -161,7 +161,7 @@ class TelefonicaConfigurationParser
   end
 
   def basic_interpolation_telefonica!(value, default_section_hash, section_hash)
-    # Interpolation in the form of $host only appears in OpenStack conf files and is not documented in python
+    # Interpolation in the form of $host only appears in Telefonica conf files and is not documented in python
     # configparser.
     # Interpolation in format $home_dir, looks in current section or default section,  if interpolation is not found
     # keep the string intact.

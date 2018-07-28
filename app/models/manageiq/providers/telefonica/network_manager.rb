@@ -51,7 +51,7 @@ class ManageIQ::Providers::Telefonica::NetworkManager < ManageIQ::Providers::Net
   end
 
   def self.description
-    @description ||= "OpenStack Network".freeze
+    @description ||= "Telefonica Network".freeze
   end
 
   def self.default_blacklisted_event_names
@@ -196,6 +196,6 @@ class ManageIQ::Providers::Telefonica::NetworkManager < ManageIQ::Providers::Net
   end
 
   def self.display_name(number = 1)
-    n_('Network Provider (OpenStack)', 'Network Providers (OpenStack)', number)
+    n_('Network Provider (Telefonica)', 'Network Providers (Telefonica)', number)
   end
 end

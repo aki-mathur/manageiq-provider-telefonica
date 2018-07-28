@@ -9,7 +9,7 @@ module ManageIQ::Providers::Telefonica::ManagerMixin
 
   alias_attribute :keystone_v3_domain_id, :uid_ems
   #
-  # OpenStack interactions
+  # Telefonica interactions
   #
   module ClassMethods
     def raw_connect(password, params, service = "Compute")
@@ -196,7 +196,7 @@ module ManageIQ::Providers::Telefonica::ManagerMixin
     case auth_type.to_s
     when 'default' then verify_api_credentials(options)
     when 'amqp' then    verify_amqp_credentials(options)
-    else;           raise "Invalid OpenStack Authentication Type: #{auth_type.inspect}"
+    else;           raise "Invalid Telefonica Authentication Type: #{auth_type.inspect}"
     end
   end
 

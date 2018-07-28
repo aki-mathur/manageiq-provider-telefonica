@@ -55,7 +55,7 @@ class ManageIQ::Providers::Telefonica::CloudManager::Vm < ManageIQ::Providers::C
       end
       unless port
         raise(MiqException::MiqNetworkPortNotDefinedError,
-              "Neutron port for floating IP association is not defined for OpenStack"\
+              "Neutron port for floating IP association is not defined for Telefonica"\
               "network #{public_network.ems_ref} and EMS '#{ext_management_system.name}'")
       end
 
@@ -112,7 +112,7 @@ class ManageIQ::Providers::Telefonica::CloudManager::Vm < ManageIQ::Providers::C
   end
 
   def perform_metadata_scan(ost)
-    require 'OpenStackExtract/MiqOpenStackVm/MiqOpenStackInstance'
+    require 'TelefonicaExtract/MiqTelefonicaVm/MiqTelefonicaInstance'
 
     _log.debug "instance_id = #{ems_ref}"
     ost.scanTime = Time.now.utc unless ost.scanTime
@@ -121,7 +121,7 @@ class ManageIQ::Providers::Telefonica::CloudManager::Vm < ManageIQ::Providers::C
     os_handle = ems.telefonica_handle
 
     begin
-      miq_vm = MiqOpenStackInstance.new(ems_ref, os_handle)
+      miq_vm = MiqTelefonicaInstance.new(ems_ref, os_handle)
       scan_via_miq_vm(miq_vm, ost)
     ensure
       miq_vm.unmount if miq_vm
@@ -168,6 +168,6 @@ class ManageIQ::Providers::Telefonica::CloudManager::Vm < ManageIQ::Providers::C
   end
 
   def self.display_name(number = 1)
-    n_('Instance (OpenStack)', 'Instances (OpenStack)', number)
+    n_('Instance (Telefonica)', 'Instances (Telefonica)', number)
   end
 end

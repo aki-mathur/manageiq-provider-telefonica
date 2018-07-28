@@ -97,7 +97,7 @@ class ManageIQ::Providers::Telefonica::NetworkManager::CloudSubnet < ::CloudSubn
   end
 
   def self.display_name(number = 1)
-    n_('Cloud Subnet (OpenStack)', 'Cloud Subnets (OpenStack)', number)
+    n_('Cloud Subnet (Telefonica)', 'Cloud Subnets (Telefonica)', number)
   end
 
   private

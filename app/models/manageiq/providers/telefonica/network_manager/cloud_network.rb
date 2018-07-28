@@ -151,7 +151,7 @@ class ManageIQ::Providers::Telefonica::NetworkManager::CloudNetwork < ::CloudNet
   def ip_address_used_count_live(reload = false)
     @ip_address_used_count_live = nil if reload
     if @public
-      # Number of ports with fixed IPs plugged into the network. Live means it talks directly to OpenStack API
+      # Number of ports with fixed IPs plugged into the network. Live means it talks directly to Telefonica API
       # TODO(lsmola) we probably need paginated API call, there should be no multitenancy needed, but the current
       # UI code allows to mix tenants, so it could be needed, athough netron doesn seem to have --all-tenants calls,
       # so when I use admin, I can see other tenant resources. Investigate, fix.
@@ -189,7 +189,7 @@ class ManageIQ::Providers::Telefonica::NetworkManager::CloudNetwork < ::CloudNet
   end
 
   def self.display_name(number = 1)
-    n_('Cloud Network (OpenStack)', 'Cloud Networks (OpenStack)', number)
+    n_('Cloud Network (Telefonica)', 'Cloud Networks (Telefonica)', number)
   end
 
   private

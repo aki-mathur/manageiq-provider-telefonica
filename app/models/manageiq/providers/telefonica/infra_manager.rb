@@ -63,7 +63,7 @@ class ManageIQ::Providers::Telefonica::InfraManager < ManageIQ::Providers::Infra
   end
 
   def self.description
-    @description ||= "OpenStack Platform Director".freeze
+    @description ||= "Telefonica Platform Director".freeze
   end
 
   def self.default_blacklisted_event_names
@@ -114,7 +114,7 @@ class ManageIQ::Providers::Telefonica::InfraManager < ManageIQ::Providers::Infra
     when 'default'     then verify_api_credentials(options)
     when 'amqp'        then verify_amqp_credentials(options)
     when 'ssh_keypair' then verify_ssh_keypair_credentials(options)
-    else               raise "Invalid OpenStack Authentication Type: #{auth_type.inspect}"
+    else               raise "Invalid Telefonica Authentication Type: #{auth_type.inspect}"
     end
   end
 
@@ -172,6 +172,6 @@ class ManageIQ::Providers::Telefonica::InfraManager < ManageIQ::Providers::Infra
   end
 
   def self.display_name(number = 1)
-    n_('Infrastructure Provider (OpenStack)', 'Infrastructure Providers (OpenStack)', number)
+    n_('Infrastructure Provider (Telefonica)', 'Infrastructure Providers (Telefonica)', number)
   end
 end

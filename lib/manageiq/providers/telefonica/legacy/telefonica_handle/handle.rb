@@ -59,7 +59,7 @@ module TelefonicaHandle
 
     def self.raw_connect(username, password, auth_url, service = "Compute", extra_opts = nil)
       opts = {
-        :provider                => 'OpenStack',
+        :provider                => 'Telefonica',
         :telefonica_auth_url      => auth_url,
         :telefonica_username      => username,
         :telefonica_api_key       => password,
@@ -71,15 +71,15 @@ module TelefonicaHandle
       opts[:telefonica_service_type] = ["workflowv2"] if service == "Workflow"
 
       if service == "Planning"
-        # Special behaviour for Planning service Tuskar, since it is OpenStack specific service, there is no
-        # Fog::Planning module, only Fog::OpenStack::Planning
+        # Special behaviour for Planning service Tuskar, since it is Telefonica specific service, there is no
+        # Fog::Planning module, only Fog::Telefonica::Planning
         Fog::Telefonica.const_get(service).new(opts)
       elsif service == "Workflow"
-        Fog::Workflow::OpenStack.new(opts)
+        Fog::Workflow::Telefonica.new(opts)
       elsif service == "Metric"
-        Fog::Metric::OpenStack.new(opts)
+        Fog::Metric::Telefonica.new(opts)
       elsif service == "Event"
-        Fog::Event::OpenStack.new(opts)
+        Fog::Event::Telefonica.new(opts)
       else
         Fog.const_get(service).new(opts)
       end
@@ -399,7 +399,7 @@ module TelefonicaHandle
           end
         else
           $fog_log.warn("MIQ(#{self.class.name}##{__method__}) "\
-                        "Could not access service #{service_name} for tenant #{tenant.name} on OpenStack #{@address}")
+                        "Could not access service #{service_name} for tenant #{tenant.name} on Telefonica #{@address}")
         end
       end
     end
@@ -407,7 +407,7 @@ module TelefonicaHandle
     def accessor_for_accessible_tenants(service, accessor, uniq_id, array_accessor = true)
       ra = []
       service_for_each_accessible_tenant(service) do |svc, project|
-        not_found_error = Fog.const_get(service)::OpenStack::NotFound
+        not_found_error = Fog.const_get(service)::Telefonica::NotFound
 
         rv = begin
           if accessor.kind_of?(Proc)
@@ -417,7 +417,7 @@ module TelefonicaHandle
           end
 
         rescue not_found_error => e
-          $fog_log.warn("MIQ(#{self.class.name}.#{__method__}) HTTP 404 Error during OpenStack request. " \
+          $fog_log.warn("MIQ(#{self.class.name}.#{__method__}) HTTP 404 Error during Telefonica request. " \
                         "Skipping inventory item #{service} #{accessor}\n#{e}")
           nil
         end

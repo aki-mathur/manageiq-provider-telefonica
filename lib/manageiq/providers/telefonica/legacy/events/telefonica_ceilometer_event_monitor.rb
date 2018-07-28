@@ -45,13 +45,13 @@ class TelefonicaCeilometerEventMonitor < TelefonicaEventMonitor
 
   def each_batch
     while @monitor_events
-      $log.info("Querying OpenStack for events newer than #{latest_event_timestamp}...") if $log
+      $log.info("Querying Telefonica for events newer than #{latest_event_timestamp}...") if $log
       events = list_events(query_options).sort_by(&:generated)
       @since = events.last.generated unless events.empty?
 
       amqp_events = filter_unwanted_events(events).map do |event|
         converted_event = TelefonicaCeilometerEventConverter.new(event)
-        $log.debug("Processing a new OpenStack event: #{event.inspect}") if $log
+        $log.debug("Processing a new Telefonica event: #{event.inspect}") if $log
         telefonica_event(nil, converted_event.metadata, converted_event.payload)
       end
 
@@ -84,7 +84,7 @@ class TelefonicaCeilometerEventMonitor < TelefonicaEventMonitor
   private
 
   def filter_unwanted_events(events)
-    $log.debug("Received a new OpenStack events batch: (before filtering)") if $log && events.any?
+    $log.debug("Received a new Telefonica events batch: (before filtering)") if $log && events.any?
     $log.debug(events.inspect) if $log && events.any?
     @event_type_regex ||= Regexp.new(@config[:event_types_regex].to_s)
     events.select { |event| @event_type_regex.match(event.event_type) }
@@ -101,9 +101,9 @@ class TelefonicaCeilometerEventMonitor < TelefonicaEventMonitor
   def list_events(query_options)
     provider_connection.list_events(query_options).body.map do |event_hash|
       begin
-        Fog::Event::OpenStack::Event.new(event_hash)
+        Fog::Event::Telefonica::Event.new(event_hash)
       rescue NameError
-        Fog::Metering::OpenStack::Event.new(event_hash)
+        Fog::Metering::Telefonica::Event.new(event_hash)
       end
     end
   end

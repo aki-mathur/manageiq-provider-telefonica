@@ -10,6 +10,6 @@ class ManageIQ::Providers::Telefonica::NetworkManager::NetworkPort < ::NetworkPo
   end
 
   def self.display_name(number = 1)
-    n_('Network Port (OpenStack)', 'Network Ports (OpenStack)', number)
+    n_('Network Port (Telefonica)', 'Network Ports (Telefonica)', number)
   end
 end

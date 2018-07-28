@@ -40,6 +40,6 @@ class ManageIQ::Providers::Telefonica::CloudManager::Flavor < ::Flavor
   end
 
   def self.display_name(number = 1)
-    n_('Flavor (OpenStack)', 'Flavors (OpenStack)', number)
+    n_('Flavor (Telefonica)', 'Flavors (Telefonica)', number)
   end
 end

@@ -156,7 +156,7 @@ class ManageIQ::Providers::Telefonica::NetworkManager::SecurityGroup < ::Securit
   end
 
   def self.display_name(number = 1)
-    n_('Security Group (OpenStack)', 'Security Groups (OpenStack)', number)
+    n_('Security Group (Telefonica)', 'Security Groups (Telefonica)', number)
   end
 
   private

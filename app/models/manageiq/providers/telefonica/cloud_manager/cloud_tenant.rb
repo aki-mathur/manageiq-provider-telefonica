@@ -46,7 +46,7 @@ class ManageIQ::Providers::Telefonica::CloudManager::CloudTenant < ::CloudTenant
   end
 
   def self.display_name(number = 1)
-    n_('Cloud Tenant (OpenStack)', 'Cloud Tenants (OpenStack)', number)
+    n_('Cloud Tenant (Telefonica)', 'Cloud Tenants (Telefonica)', number)
   end
 
   private

@@ -70,6 +70,6 @@ class ManageIQ::Providers::Telefonica::CloudManager::OrchestrationStack < Manage
   end
 
   def self.display_name(number = 1)
-    n_('Orchestration Stack (OpenStack)', 'Orchestration Stacks (OpenStack)', number)
+    n_('Orchestration Stack (Telefonica)', 'Orchestration Stacks (Telefonica)', number)
   end
 end

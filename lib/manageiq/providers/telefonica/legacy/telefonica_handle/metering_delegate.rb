@@ -1,5 +1,5 @@
 module TelefonicaHandle
-  class MeteringDelegate < DelegateClass(Fog::Metering::OpenStack)
+  class MeteringDelegate < DelegateClass(Fog::Metering::Telefonica)
     include TelefonicaHandle::HandledList
     include Vmdb::Logging
 

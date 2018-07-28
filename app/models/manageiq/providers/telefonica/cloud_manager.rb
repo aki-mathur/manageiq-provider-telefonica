@@ -117,7 +117,7 @@ class ManageIQ::Providers::Telefonica::CloudManager < ManageIQ::Providers::Cloud
   end
 
   def self.description
-    @description ||= "OpenStack".freeze
+    @description ||= "Telefonica".freeze
   end
 
   def self.default_blacklisted_event_names
@@ -246,7 +246,7 @@ class ManageIQ::Providers::Telefonica::CloudManager < ManageIQ::Providers::Cloud
   def vm_create_snapshot(vm, options = {})
     log_prefix = "vm=[#{vm.name}]"
 
-    miq_telefonica_instance = MiqOpenStackInstance.new(vm.ems_ref, telefonica_handle)
+    miq_telefonica_instance = MiqTelefonicaInstance.new(vm.ems_ref, telefonica_handle)
     snapshot = miq_telefonica_instance.create_snapshot(options)
     Notification.create(:type => :vm_snapshot_success, :subject => vm, :options => {:snapshot_op => 'create'})
     snapshot_id = snapshot["id"]
@@ -273,7 +273,7 @@ class ManageIQ::Providers::Telefonica::CloudManager < ManageIQ::Providers::Cloud
 
     log_prefix = "snapshot=[#{snapshot_uid}]"
 
-    miq_telefonica_instance = MiqOpenStackInstance.new(vm.ems_ref, telefonica_handle)
+    miq_telefonica_instance = MiqTelefonicaInstance.new(vm.ems_ref, telefonica_handle)
     miq_telefonica_instance.delete_evm_snapshot(snapshot_uid)
     Notification.create(:type => :vm_snapshot_success, :subject => vm, :options => {:snapshot_op => 'remove'})
 
@@ -299,11 +299,11 @@ class ManageIQ::Providers::Telefonica::CloudManager < ManageIQ::Providers::Cloud
   # TODO: Should this be in a VM-specific subclass or mixin?
   #       This is a general EMS question.
   def vm_create_evm_snapshot(vm, options = {})
-    require "OpenStackExtract/MiqOpenStackVm/MiqOpenStackInstance"
+    require "TelefonicaExtract/MiqTelefonicaVm/MiqTelefonicaInstance"
 
     log_prefix = "vm=[#{vm.name}]"
 
-    miq_telefonica_instance = MiqOpenStackInstance.new(vm.ems_ref, telefonica_handle)
+    miq_telefonica_instance = MiqTelefonicaInstance.new(vm.ems_ref, telefonica_handle)
     miq_snapshot = miq_telefonica_instance.create_evm_snapshot(options)
 
     # Add new snapshot image to the vms table. Type is TemplateTelefonica.
@@ -333,11 +333,11 @@ class ManageIQ::Providers::Telefonica::CloudManager < ManageIQ::Providers::Cloud
   end
 
   def vm_delete_evm_snapshot(vm, image_id)
-    require "OpenStackExtract/MiqOpenStackVm/MiqOpenStackInstance"
+    require "TelefonicaExtract/MiqTelefonicaVm/MiqTelefonicaInstance"
 
     log_prefix = "snapshot=[#{image_id}]"
 
-    miq_telefonica_instance = MiqOpenStackInstance.new(vm.ems_ref, telefonica_handle)
+    miq_telefonica_instance = MiqTelefonicaInstance.new(vm.ems_ref, telefonica_handle)
     miq_telefonica_instance.delete_evm_snapshot(image_id)
 
     # Remove from the snapshots table.
@@ -391,6 +391,6 @@ class ManageIQ::Providers::Telefonica::CloudManager < ManageIQ::Providers::Cloud
   end
 
   def self.display_name(number = 1)
-    n_('Cloud Provider (OpenStack)', 'Cloud Providers (OpenStack)', number)
+    n_('Cloud Provider (Telefonica)', 'Cloud Providers (Telefonica)', number)
   end
 end

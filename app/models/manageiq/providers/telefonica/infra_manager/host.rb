@@ -437,6 +437,6 @@ class ManageIQ::Providers::Telefonica::InfraManager::Host < ::Host
   end
 
   def self.display_name(number = 1)
-    n_('Host (OpenStack)', 'Hosts (OpenStack)', number)
+    n_('Host (Telefonica)', 'Hosts (Telefonica)', number)
   end
 end

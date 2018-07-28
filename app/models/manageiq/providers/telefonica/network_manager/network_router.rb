@@ -163,7 +163,7 @@ class ManageIQ::Providers::Telefonica::NetworkManager::NetworkRouter < ::Network
   end
 
   def self.display_name(number = 1)
-    n_('Network Router (OpenStack)', 'Network Routers (OpenStack)', number)
+    n_('Network Router (Telefonica)', 'Network Routers (Telefonica)', number)
   end
 
   private

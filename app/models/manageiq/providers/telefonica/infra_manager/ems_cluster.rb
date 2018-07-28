@@ -14,7 +14,7 @@ class ManageIQ::Providers::Telefonica::InfraManager::EmsCluster < ::EmsCluster
   end
 
   # ###########################################33
-  # OpenStack status aggregate methods
+  # Telefonica status aggregate methods
   def service_groups
     hosts.joins(:host_service_groups)
   end

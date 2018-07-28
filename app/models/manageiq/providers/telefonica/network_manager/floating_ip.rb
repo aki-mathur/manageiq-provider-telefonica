@@ -117,7 +117,7 @@ class ManageIQ::Providers::Telefonica::NetworkManager::FloatingIp < ::FloatingIp
   end
 
   def self.display_name(number = 1)
-    n_('Floating IP (OpenStack)', 'Floating IPs (OpenStack)', number)
+    n_('Floating IP (Telefonica)', 'Floating IPs (Telefonica)', number)
   end
 
   private

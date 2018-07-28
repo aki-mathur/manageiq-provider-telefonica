@@ -121,7 +121,7 @@ module ManageIQ::Providers::Telefonica::IdentitySyncMixin
       user = nil if user.email != email
     elsif keystone.list_user_projects_tenants(telefonica_uuid).count.zero?
       # don't create a new user if the user is not a member of
-      # any tenants in OpenStack because the user's current_group
+      # any tenants in Telefonica because the user's current_group
       # attribute will be nil and will not be able to login.
     else
       user = User.new
