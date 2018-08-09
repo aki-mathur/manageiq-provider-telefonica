@@ -13,7 +13,7 @@ module ManageIQ::Providers::Telefonica
           s.close_write
           res = s.read
         end
-        ost.hypervisor << :telefonica_infra if res =~ /Telefonica Ironic API/
+        # ost.hypervisor << :telefonica_infra if res =~ /Telefonica Ironic API/
       end
     end
   end

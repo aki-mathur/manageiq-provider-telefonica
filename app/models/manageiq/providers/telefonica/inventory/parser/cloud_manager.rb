@@ -4,7 +4,7 @@ class ManageIQ::Providers::Telefonica::Inventory::Parser::CloudManager < ManageI
 
   def parse
     availability_zones
-    cloud_services
+    # cloud_services
     flavors
     miq_templates
     key_pairs

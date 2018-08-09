@@ -66,8 +66,8 @@ module ManageIQ::Providers
       get_vnfds
       # get_hosts
       get_images
-      get_servers
-      get_cloud_services
+      # get_servers
+      # get_cloud_services
 
       $fog_log.info("#{log_header}...Complete")
 
