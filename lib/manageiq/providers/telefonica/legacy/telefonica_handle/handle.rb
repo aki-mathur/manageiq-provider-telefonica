@@ -63,6 +63,7 @@ module TelefonicaHandle
         :telefonica_auth_url      => auth_url,
         :telefonica_username      => username,
         :telefonica_api_key       => password,
+        :telefonica_domain_name   => 'Huawei China',
         :telefonica_endpoint_type => 'publicURL',
       }
       opts.merge!(extra_opts) if extra_opts
@@ -381,7 +382,7 @@ module TelefonicaHandle
     end
 
     def default_tenant_name
-      return @default_tenant_name ||= "admin" if tenant_accessible?("admin")
+      return @default_tenant_name ||= "na-mexico-1_manageiq" if tenant_accessible?("na-mexico-1_manageiq")
       tenant_names.each do |name|
         next if name == "services"
         return @default_tenant_name ||= name if tenant_accessible?(name)
