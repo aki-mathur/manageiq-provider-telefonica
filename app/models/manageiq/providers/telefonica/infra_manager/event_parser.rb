@@ -10,7 +10,7 @@ module ManageIQ::Providers::Telefonica::InfraManager::EventParser
     # attributes that are common to all notifications
     event_hash = {
       :event_type => event_type,
-      :source     => "OPENSTACK",
+      :source     => "TELEFONICA",
       :message    => payload,
       :timestamp  => content["timestamp"],
       :username   => content["_context_user_name"],

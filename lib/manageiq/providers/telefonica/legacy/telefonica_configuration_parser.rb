@@ -29,7 +29,7 @@ class TelefonicaConfigurationParser
   # Interpolation in format %(attribute_name)
   BASIC_INTERPOLATION_REGEXP           = /\%\((.+?)\)/
   # Interpolation in format $attribute_name
-  BASIC_OPENSTACK_INTERPOLATION_REGEXP = /\$([\w_]+)/
+  BASIC_TELEFONICA_INTERPOLATION_REGEXP = /\$([\w_]+)/
   # Interpolation in format ${attribute_name}
   EXTENDED_INTERPOLATION_REGEXP        = /\$\{(.+?)\}/
 
@@ -166,7 +166,7 @@ class TelefonicaConfigurationParser
     # Interpolation in format $home_dir, looks in current section or default section,  if interpolation is not found
     # keep the string intact.
     interpolated = false
-    value.gsub!(BASIC_OPENSTACK_INTERPOLATION_REGEXP) do |x|
+    value.gsub!(BASIC_TELEFONICA_INTERPOLATION_REGEXP) do |x|
       interpolated = section_hash.fetch_path($1, :value) || default_section_hash.fetch_path($1, :value)
       interpolated || x
     end

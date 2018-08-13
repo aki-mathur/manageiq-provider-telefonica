@@ -30,15 +30,15 @@ end
 
 require 'pp'
 
-OPENSTACK_RDU_DEV_SERVER = raise "please define"
-OPENSTACK_RDU_DEV_PORT   = ""
-OPENSTACK_RDU_USERNAME   = ""
-OPENSTACK_RDU_PASSWORD   = ""
+TELEFONICA_RDU_DEV_SERVER = raise "please define"
+TELEFONICA_RDU_DEV_PORT   = ""
+TELEFONICA_RDU_USERNAME   = ""
+TELEFONICA_RDU_PASSWORD   = ""
 
 os_monitor = TelefonicaEventMonitor.new(:events_monitor => :amqp,
-                                       :hostname       => OPENSTACK_RDU_DEV_SERVER,
-                                       :username       => OPENSTACK_RDU_USERNAME,
-                                       :password       => OPENSTACK_RDU_PASSWORD,
+                                       :hostname       => TELEFONICA_RDU_DEV_SERVER,
+                                       :username       => TELEFONICA_RDU_USERNAME,
+                                       :password       => TELEFONICA_RDU_PASSWORD,
                                        :topics         => {"nova"    => "notifications.*",
                                                            "glance"  => "notifications.*",
                                                            "cinder"  => "notifications.*",
