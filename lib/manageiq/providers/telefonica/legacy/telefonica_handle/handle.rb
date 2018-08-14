@@ -59,7 +59,7 @@ module TelefonicaHandle
 
     def self.raw_connect(username, password, auth_url, service = "Compute", extra_opts = nil)
       opts = {
-        :provider                => 'Telefonica',
+        :provider                 => 'Telefonica',
         :telefonica_auth_url      => auth_url,
         :telefonica_username      => username,
         :telefonica_api_key       => password,
@@ -106,7 +106,8 @@ module TelefonicaHandle
     end
 
     def self.url(address, port = 5000, scheme = "http", path = "")
-      URI::Generic.build(:scheme => scheme, :host => address, :port => port.to_i, :path => path).to_s
+      # URI::Generic.build(:scheme => scheme, :host => address, :port => port.to_i, :path => path).to_s
+      URI::Generic.build(:scheme => scheme, :host => address, :path => path).to_s
     end
 
     class << self
